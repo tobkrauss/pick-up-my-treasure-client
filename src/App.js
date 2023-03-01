@@ -7,6 +7,7 @@ import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; 
+import AddTreasurePage from './pages/AddTreasurePage';
 
 
 function App() {
@@ -16,7 +17,9 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/treasure-list" element={<IsPrivate> <TreasureListPage /> </IsPrivate>}
+        <Route exact path="/treasure" element={<IsPrivate> <TreasureListPage /> </IsPrivate>}
+        />
+        <Route exact path="/new-treasure" element={<IsPrivate> <AddTreasurePage /> </IsPrivate>}
         />
         <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
