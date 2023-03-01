@@ -8,6 +8,7 @@ import IsAnon from './components/IsAnon';
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; 
 import AddTreasurePage from './pages/AddTreasurePage';
+import TreasureDetailsPage from './pages/TreasureDetailsPage';
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/treasure" element={<IsPrivate> <TreasureListPage /> </IsPrivate>}
+        />
+        <Route exact path="/treasure/:treasureId"  element={ <IsPrivate> <TreasureDetailsPage /> </IsPrivate> }
         />
         <Route exact path="/new-treasure" element={<IsPrivate> <AddTreasurePage /> </IsPrivate>}
         />
