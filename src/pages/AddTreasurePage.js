@@ -8,7 +8,7 @@ function AddTreasurePage() {
     const [owner, setOwner] = useState("")
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
-    const [image, setImage] = useState("")
+    const [imageUrl, setImageUrl] = useState("")
     const [street, setStreet] = useState("")
     const [zipcode, setZipcode] = useState(10115)
     const [city, setCity] = useState("")
@@ -18,7 +18,7 @@ function AddTreasurePage() {
     const handleOwnerChange = (e) => setOwner(e.target.value)
     const handleTitleChange = (e) => setTitle(e.target.value)
     const handleDescriptionChange = (e) => setDescription(e.target.value)
-    const handleImageChange = (e) => setImage(e.target.value)
+    const handleImageUrlChange = (e) => setImageUrl(e.target.value)
     const handleStreetChange = (e) => setStreet(e.target.value)
     const handleZipcodeChange = (e) => setZipcode(e.target.value)
     const handleCityChange = (e) => setCity(e.target.value)
@@ -27,7 +27,7 @@ function AddTreasurePage() {
         e.preventDefault()
 
 
-        const requestBody = { owner, title, description, image, street, zipcode, city }
+        const requestBody = { owner, title, description, imageUrl, street, zipcode, city }
 
         const storedToken = localStorage.getItem('authToken');
 
@@ -39,7 +39,7 @@ function AddTreasurePage() {
                 setOwner("")
                 setTitle("")
                 setDescription("")
-                setImage("")
+                setImageUrl("")
                 setStreet("")
                 setZipcode(10115)
                 setCity("")
@@ -64,7 +64,7 @@ function AddTreasurePage() {
                 <input type="text" name="description" value={description} onChange={handleDescriptionChange} />
 
                 <label htmlFor="image">Image</label>
-                <input type="text" name="image" value={image} onChange={handleImageChange} />
+                <input type="text" name="image" value={imageUrl} onChange={handleImageUrlChange} />
 
                 <label htmlFor="street">Street</label>
                 <input type="text" name="street" value={street} onChange={handleStreetChange} />
