@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ItemCard from "../components/ItemCard";
+import AddItem from "../components/AddItem";
 
 const API_URL = "http://localhost:5005"
 
@@ -13,7 +14,7 @@ function TreasureDetailsPage() {
 
     const getTreasure = () => {
         const storedToken = localStorage.getItem('authToken');
-
+console.log(storedToken)
         axios
             .get(`${API_URL}/api/treasure/${treasureId}`,
             { headers: { Authorization: `Bearer ${storedToken}` } }
@@ -26,7 +27,7 @@ function TreasureDetailsPage() {
     }
 
     useEffect(() => {
-        getTreasure ()
+        getTreasure()
     }, [])
 
 
@@ -39,7 +40,7 @@ function TreasureDetailsPage() {
                 </>
             )}
 
-           {/*  <AddItem refreshTreasure={getTreasure} treasureId={treasureId} /> */}
+            <AddItem refreshTreasure={getTreasure} treasureId={treasureId} />
 
 
             {treasure && treasure.items.map(item => {
