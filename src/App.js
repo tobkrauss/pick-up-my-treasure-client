@@ -4,18 +4,23 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import TreasureListPage from './pages/TreasureListPage';
 import IsPrivate from './components/IsPrivate';
+import IsAnon from './components/IsAnon';
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage"; 
 
 
 function App() {
   return (
     <div className="App">
- <Navbar />
+      <Navbar />
 
-<Routes>
-  <Route exact path="/" element={<HomePage />} />
-  <Route exact path="/treasure-list" element={ <IsPrivate> <TreasureListPage /> </IsPrivate> } 
+      <Routes>
+        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/treasure-list" element={<IsPrivate> <TreasureListPage /> </IsPrivate>}
         />
-</Routes>
+        <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
+        <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
+      </Routes>
 
     </div>
   );
