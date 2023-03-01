@@ -9,6 +9,7 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage"; 
 import AddTreasurePage from './pages/AddTreasurePage';
 import TreasureDetailsPage from './pages/TreasureDetailsPage';
+import EditTreasurePage from './pages/EditTreasurePage';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
         <Route exact path="/treasure" element={<IsPrivate> <TreasureListPage /> </IsPrivate>}
         />
         <Route exact path="/treasure/:treasureId"  element={ <IsPrivate> <TreasureDetailsPage /> </IsPrivate> }
+        />
+        <Route exact path="/treasure/edit/:treasureId"  element={ <IsPrivate> <EditTreasurePage /> </IsPrivate> } 
         />
         <Route exact path="/new-treasure" element={<IsPrivate> <AddTreasurePage /> </IsPrivate>}
         />
