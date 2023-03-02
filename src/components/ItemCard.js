@@ -1,7 +1,26 @@
-import { Link, useParams } from "react-router-dom";
+import axios from "axios";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
-function ItemCard({title, description, category, imageUrl, condition, _id}) {
-    const { itemId } = useParams()
+
+const API_URL = "http://localhost:5005"
+
+function ItemCard({getTreasure, title, description, category, imageUrl, condition, treasure, _id}) {
+  
+    const navigate = useNavigate()
+    
+    const storedToken = localStorage.getItem('authToken');
+
+    const handleDeleteProject = (e) => {
+        axios
+        .delete(`${API_URL}/api/items/${_id}`,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
+        .then(response => {
+           getTreasure()
+        })
+        .catch(err => console.log(err))
+      }
+
     return ( 
         <div>
         <li className="TaskCard card">
@@ -15,6 +34,8 @@ function ItemCard({title, description, category, imageUrl, condition, _id}) {
     <Link to={`/items/edit/${_id}`}>
     <button>Edit Item</button>
 </Link>
+
+<button onClick={handleDeleteProject}>Delete Item</button>
 </li>
 </div>
      );

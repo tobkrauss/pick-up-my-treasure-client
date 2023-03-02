@@ -11,14 +11,20 @@ const API_URL = "http://localhost:5005"
 function TreasureDetailsPage() {
     const [treasure, setTreasure] = useState(null)
     const { treasureId } = useParams()
+    const [showForm, setShowForm] = useState(false)
+
+
+    const toggleShowForm = () => {
+        setShowForm(!showForm)
+    }
 
     const getTreasure = () => {
         const storedToken = localStorage.getItem('authToken');
-console.log(storedToken)
+        console.log(storedToken)
         axios
             .get(`${API_URL}/api/treasure/${treasureId}`,
-            { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
             .then(response => {
                 const oneTreasure = response.data
                 setTreasure(oneTreasure)
@@ -29,13 +35,13 @@ console.log(storedToken)
     useEffect(() => {
         getTreasure()
     }, [])
+    
 
-
-    return ( 
+    return (
         <div className="ProjectDetails">
             {treasure && (
                 <>
-                     <img src={treasure.imageUrl} alt="treasure" style={{width: 400}} />
+                    <img src={treasure.imageUrl} alt="treasure" style={{ width: 400 }} />
                     <h1>{treasure.title}</h1>
                     <p>{treasure.description}</p>
                     <p>{treasure.owner}</p>
@@ -45,14 +51,14 @@ console.log(storedToken)
                 </>
             )}
 
-            <AddItem refreshTreasure={getTreasure} treasureId={treasureId} />
-
-
             {treasure && treasure.items.map(item => {
                 return (
-                   <ItemCard key={item._id} {...item} />
+                    <ItemCard key={item._id} {...item} getTreasure={getTreasure} />
                 )
             })}
+
+            {showForm && <AddItem refreshTreasure={getTreasure} treasureId={treasureId} />}
+            <button onClick={toggleShowForm} >{showForm ? 'Hide Form' : 'Add New Item'}</button>
 
             <Link to="/treasure">
                 <button>Back to all Treasure</button>
@@ -61,7 +67,7 @@ console.log(storedToken)
                 <button>Edit Treasure</button>
             </Link>
         </div>
-     );
+    );
 }
 
 export default TreasureDetailsPage;
