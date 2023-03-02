@@ -2,19 +2,6 @@ body {
   margin: 0;
 }
  
-a {
-  list-style: none;
-  color: black;
-}
- 
-button,
-select {
-  padding: 5px 10px;
-  min-width: 50px;
-  margin: 5px;
-  font-size: 18px;
-}
- 
 label {
   width: 200px;
   display: block;
@@ -28,30 +15,56 @@ textarea {
   margin: 10px;
 }
  
-nav {
-  background: #515f7d;
-  color: white;
-  padding: 0px 20px;
-  box-shadow: 0px 1px 2px gray;
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 5px;
+.Navbar {
+  height: 7vh;
+  background-color: white;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+justify-content: left;
+align-items: end;
 }
- 
-nav li {
-  list-style: none;
-  color: white;
-  font-size: 24px;
-  font-weight: 600;
+
+.Navbar button {
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  min-width: 50px;
+  margin: 5px;
+  font-size: 18px;
+  background-color: greenyellow;
 }
- 
+
+.navbar-user {
+margin-left: 65vw ;
+}
+
+.navbar-user button {
+  margin-left: 2vh;
+}
+
+.navbar-login {
+  margin-left: 80vw ;
+  }
+
+ .overview {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: baseline;
+	align-content: flex-start;
+  margin: 20px;
+ }
+
+
 .card {
   width: 400px;
   padding: 10px;
   box-shadow: 0px 2px 3px grey;
   margin: 0 auto;
   margin-bottom: 20px;
-  background: #94a7c8;
+  background: lightgrey;
   border-radius: 4px;
 }
  

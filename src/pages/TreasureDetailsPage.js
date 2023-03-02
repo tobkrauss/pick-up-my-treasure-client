@@ -45,9 +45,7 @@ function TreasureDetailsPage() {
                     <h1>{treasure.title}</h1>
                     <p>{treasure.description}</p>
                     <p>{treasure.owner}</p>
-                    <p>{treasure.street}</p>
-                    <p>{treasure.zipcode}</p>
-                    <p>{treasure.city}</p>
+                    <p>{treasure.street}, {treasure.zipcode} {treasure.city}</p>
                 </>
             )}
 

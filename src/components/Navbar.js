@@ -16,8 +16,6 @@ function Navbar() {
           <Link to="/treasure">
             <button>Treasure List</button>
           </Link>
-          <button onClick={logOutUser}>Logout</button>
-          <span>{user && user.name}</span>
         </>
       )}
 
@@ -28,12 +26,19 @@ function Navbar() {
           </Link>
         </>
       )}
+       {isLoggedIn && (
+      
+      <div className="navbar-user">
+        <span>{user && user.name}</span>
+        <button onClick={logOutUser}>Logout</button>
+      </div>
+      )}
 
       {!isLoggedIn && (
-        <>
-          <Link to="/signup"> <button>Sign Up</button> </Link>
-          <Link to="/login"> <button>Login</button> </Link>
-        </>
+        <div className="navbar-login">
+          <Link to="/signup" style={{textDecoration: "none"}}> <button>Sign Up</button> </Link>
+          <Link to="/login" style={{textDecoration: "none"}}> <button>Login</button> </Link>
+        </div>
       )}
     </nav>
   );

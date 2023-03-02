@@ -24,7 +24,7 @@ function TreasureListPage() {
 
     
     return ( 
-        <div className="ProjectListPage">
+        <div className="overview">
 
         {treasure.map(treasure => {
             return (
