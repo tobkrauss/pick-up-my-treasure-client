@@ -86,7 +86,7 @@ function EditItemPage() {
 
                 <button type="submit">Submit</button>
             </form>
-            
+
             <button onClick={handleDeleteProject}>Delete Item</button>
         </div>
      );
