@@ -18,10 +18,28 @@ function AddTreasurePage() {
     const handleOwnerChange = (e) => setOwner(e.target.value)
     const handleTitleChange = (e) => setTitle(e.target.value)
     const handleDescriptionChange = (e) => setDescription(e.target.value)
-    const handleImageUrlChange = (e) => setImageUrl(e.target.value)
     const handleStreetChange = (e) => setStreet(e.target.value)
     const handleZipcodeChange = (e) => setZipcode(e.target.value)
     const handleCityChange = (e) => setCity(e.target.value)
+
+    const storedToken = localStorage.getItem('authToken');
+
+    const handleFileUpload = (e) => {
+        const uploadData = new FormData();
+     
+        // imageUrl => this name has to be the same as in the model since we pass
+        // req.body to .create() method when creating a new Treasure in '/api/treasure' POST route
+        uploadData.append("imageUrl", e.target.files[0]);
+     
+        axios.post("http://localhost:5005/api/upload", uploadData,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
+          .then(response => {
+            // response carries "fileUrl" which we can use to update the state
+            setImageUrl(response.data.imageUrl);
+          })
+          .catch(err => console.log("Error while uploading the file: ", err));
+      };
 
     const handleSubmmit = (e) => {
         e.preventDefault()
@@ -29,7 +47,7 @@ function AddTreasurePage() {
 
         const requestBody = { owner, title, description, imageUrl, street, zipcode, city }
 
-        const storedToken = localStorage.getItem('authToken');
+        
 
         axios
             .post(`${API_URL}/api/new-treasure`, requestBody,
@@ -64,7 +82,7 @@ function AddTreasurePage() {
                 <input type="text" name="description" value={description} onChange={handleDescriptionChange} />
 
                 <label htmlFor="image">Image</label>
-                <input type="text" name="image" value={imageUrl} onChange={handleImageUrlChange} />
+                <input type="file" onChange={(e) => handleFileUpload(e)} />
 
                 <label htmlFor="street">Street</label>
                 <input type="text" name="street" value={street} onChange={handleStreetChange} />

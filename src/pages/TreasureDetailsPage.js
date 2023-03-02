@@ -35,8 +35,12 @@ console.log(storedToken)
         <div className="ProjectDetails">
             {treasure && (
                 <>
+                     <img src={treasure.imageUrl} alt="treasure" style={{width: 400}} />
                     <h1>{treasure.title}</h1>
                     <p>{treasure.description}</p>
+                    <p>{treasure.street}</p>
+                    <p>{treasure.zipcode}</p>
+                    <p>{treasure.city}</p>
                 </>
             )}
 
