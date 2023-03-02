@@ -10,6 +10,8 @@ import LoginPage from "./pages/LoginPage";
 import AddTreasurePage from './pages/AddTreasurePage';
 import TreasureDetailsPage from './pages/TreasureDetailsPage';
 import EditTreasurePage from './pages/EditTreasurePage';
+import EditItemPage from './pages/EditItemPage';
+import ItemDetailsPage from './pages/ItemDetailsPage';
 
 
 function App() {
@@ -26,6 +28,10 @@ function App() {
         <Route exact path="/treasure/edit/:treasureId"  element={ <IsPrivate> <EditTreasurePage /> </IsPrivate> } 
         />
         <Route exact path="/new-treasure" element={<IsPrivate> <AddTreasurePage /> </IsPrivate>}
+        />
+        <Route exact path="/items/:itemId"  element={ <IsPrivate> <ItemDetailsPage /> </IsPrivate> }
+        />
+        <Route exact path="/items/edit/:itemId"  element={ <IsPrivate> <EditItemPage /> </IsPrivate> } 
         />
         <Route path="/signup" element={<IsAnon> <SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />

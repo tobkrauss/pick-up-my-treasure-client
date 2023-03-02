@@ -97,6 +97,7 @@ function EditTreasurePage() {
                 <label htmlFor="city">City</label>
                 <input type="text" name="city" value={city} onChange={handleCityChange} />
 
+                <button type="submit">Submit</button>
       </form>
 
       <button onClick={handleDeleteProject}>Delete Treasure</button>
