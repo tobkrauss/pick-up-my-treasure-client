@@ -14,13 +14,27 @@ function EditItemPage() {
 
     const { itemId } = useParams()
     const navigate = useNavigate()
-    const storedToken = localStorage.getItem('authToken');
 
     const handleTitleChange = (e) => setTitle(e.target.value)
     const handleDescriptionChange = (e) => setDescription(e.target.value)
     const handleCategoryChange = (e) => setCategory(e.target.value)
-    const handleImageUrlChange = (e) => setImageUrl(e.target.value)
     const handleConditionChange = (e) => setCondition(e.target.value)
+
+    const storedToken = localStorage.getItem('authToken');
+
+    const handleFileUpload = (e) => {
+        const uploadData = new FormData();
+    
+        uploadData.append("imageUrl", e.target.files[0]);
+     
+        axios.post("http://localhost:5005/api/upload", uploadData,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
+          .then(response => {
+            setImageUrl(response.data.imageUrl);
+          })
+          .catch(err => console.log("Error while uploading the file: ", err));
+      };
 
 
     useEffect(() => {
@@ -79,7 +93,7 @@ function EditItemPage() {
                 <input type="text" name="category" value={category} onChange={handleCategoryChange} />
 
                 <label htmlFor="imageUrl">Image</label>
-                <input type="text" name="image" value={imageUrl} onChange={handleImageUrlChange} />
+                <input type="file" onChange={(e) => handleFileUpload(e)} />
 
                 <label htmlFor="condition">Condition</label>
                 <input type="text" name="condition" value={condition} onChange={handleConditionChange} />

@@ -14,8 +14,8 @@ function ItemDetailsPage() {
 
         axios
             .get(`${API_URL}/api/items/${itemId}`,
-            { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
             .then(response => {
                 const oneItem = response.data
                 setItem(oneItem)
@@ -28,26 +28,28 @@ function ItemDetailsPage() {
     }, [])
 
 
-    return ( 
-<div className="ProjectDetails">
-            {item && (
-                <>
-                    <h1>{item.title}</h1>
-                    <p>{item.description}</p>
-                    <p>{item.category}</p>
-                    <p>{item.imageUrl}</p>
-                    <p>{item.condition}</p>
-                </>
-            )}
+    if (item){
+    return (
+            <div className="ProjectDetails">
+                {item && (
+                    <>
+                        <img src={item.imageUrl} alt="item" style={{ width: 200 }} />
+                        <h1>{item.title}</h1>
+                        <p>{item.description}</p>
+                        <p>{item.category}</p>
+                        <p>{item.condition}</p>
+                    </>
+                )}
 
-            <Link to="/treasure">
-                <button>Back to Treasure</button>
-            </Link>
-            <Link to={`/items/edit/${itemId}`}>
-                <button>Edit Item</button>
-            </Link>
-        </div>
-     );
+                <Link to={`/treasure/${item.treasure}`}>
+                    <button>Back to Treasure</button>
+                </Link>
+                <Link to={`/items/edit/${itemId}`}>
+                    <button>Edit Item</button>
+                </Link>
+            </div>
+        )
+    };
 }
 
 export default ItemDetailsPage;
