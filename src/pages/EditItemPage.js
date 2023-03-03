@@ -6,6 +6,8 @@ const API_URL = "http://localhost:5005"
 
 
 function EditItemPage() {
+    const [allowSubmit, setAllowSubmit] = useState(false)
+    
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [category, setCategory] = useState("")
@@ -31,7 +33,8 @@ function EditItemPage() {
             { headers: { Authorization: `Bearer ${storedToken}` } }
         )
             .then(response => {
-                setImageUrl(response.data.imageUrl);
+                setImageUrl(response.data.imageUrl)
+                setAllowSubmit(true);
             })
             .catch(err => console.log("Error while uploading the file: ", err));
     };
@@ -49,6 +52,7 @@ function EditItemPage() {
                 setCategory(oneItem.category)
                 setImageUrl(oneItem.imageUrl)
                 setCondition(oneItem.condition)
+                setAllowSubmit(false)
             })
             .catch(err => console.log(err))
     }, [itemId])
@@ -109,7 +113,7 @@ function EditItemPage() {
                     </div>
 
 
-                    <button className="form-button" type="submit">Save changes</button>
+                    {allowSubmit ? <button className="form-button" type="submit">Save changes</button> : <button className="form-button-edited-disabled">Save changes</button>}
 
                     <button className="delete-button" onClick={handleDeleteProject}>Delete Item</button>
                 </form>

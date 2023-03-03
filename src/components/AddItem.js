@@ -4,6 +4,8 @@ import { useState } from "react"
 const API_URL = "http://localhost:5005"
 
 function AddItem(props) {
+    const [allowSubmit, setAllowSubmit] = useState(false)
+    
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
     const [category, setCategory] = useState("")
@@ -29,7 +31,8 @@ function AddItem(props) {
         )
             .then(response => {
                 // response carries "fileUrl" which we can use to update the state
-                setImageUrl(response.data.imageUrl);
+                setImageUrl(response.data.imageUrl)
+                setAllowSubmit(true);
             })
             .catch(err => console.log("Error while uploading the file: ", err));
     };
@@ -51,6 +54,7 @@ function AddItem(props) {
                 setCategory("")
                 setImageUrl("")
                 setCondition("")
+                setAllowSubmit(false)
 
                 props.refreshTreasure()
             })
@@ -81,7 +85,7 @@ function AddItem(props) {
                 <label htmlFor="imageUrl">Image</label>
                 <input type="file" onChange={(e) => handleFileUpload(e)} />
                 </div>
-                <button className="form-button" type="submit">Add item</button>
+                {allowSubmit ? <button className="form-button" type="submit">Add Item</button> : <button className="form-button-disabled">Add Item</button>}
             </form>
         </div>
     );

@@ -14,11 +14,13 @@ function TreasureDetailsPage() {
     const [treasure, setTreasure] = useState(null)
     const { treasureId } = useParams()
     const [showForm, setShowForm] = useState(true)
+    
 
 
     const toggleShowForm = () => {
         setShowForm(!showForm)
     }
+
 
     const getTreasure = () => {
         const storedToken = localStorage.getItem('authToken');

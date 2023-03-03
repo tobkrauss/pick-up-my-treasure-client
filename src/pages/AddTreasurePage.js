@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../components/spinner";
 
 const API_URL = "http://localhost:5005"
 
 function AddTreasurePage() {
+    const [allowSubmit, setAllowSubmit] = useState(false)
+
     const [owner, setOwner] = useState("")
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -36,7 +39,8 @@ function AddTreasurePage() {
         )
             .then(response => {
                 // response carries "fileUrl" which we can use to update the state
-                setImageUrl(response.data.imageUrl);
+                setImageUrl(response.data.imageUrl)
+                setAllowSubmit(true);
             })
             .catch(err => console.log("Error while uploading the file: ", err));
     };
@@ -61,6 +65,7 @@ function AddTreasurePage() {
                 setStreet("")
                 setZipcode(10115)
                 setCity("")
+                setAllowSubmit(false)
 
                 navigate("/treasure")
             })
@@ -106,7 +111,7 @@ function AddTreasurePage() {
                     <input type="file" onChange={(e) => handleFileUpload(e)} />
                 </div>
 
-                <button className="form-button" type="submit">Add Treasure</button>
+                {allowSubmit ? <button className="form-button" type="submit">Add Treasure</button> : <button className="form-button-disabled">Add Treasure</button>}
             </form>
 
         </div>

@@ -5,6 +5,8 @@ import { useParams, useNavigate } from "react-router-dom"
 const API_URL = "http://localhost:5005"
 
 function EditTreasurePage() {
+  const [allowSubmit, setAllowSubmit] = useState(false)
+  
   const [owner, setOwner] = useState("")
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
@@ -35,7 +37,8 @@ function EditTreasurePage() {
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
       .then(response => {
-        setImageUrl(response.data.imageUrl);
+        setImageUrl(response.data.imageUrl)
+        setAllowSubmit(true);
       })
       .catch(err => console.log("Error while uploading the file: ", err));
   };
@@ -124,7 +127,7 @@ function EditTreasurePage() {
           <input type="file" onChange={(e) => handleFileUpload(e)} />
         </div>
 
-        <button className="form-button" type="submit">Edit Treasure</button>
+        {allowSubmit ? <button className="form-button" type="submit">Save changes</button> : <button className="form-button-edited-disabled">Save changes</button>}
         <button className="delete-button" onClick={handleDeleteProject}>Delete Treasure</button>
       </form>
     </div>
