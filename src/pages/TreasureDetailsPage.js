@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ItemCard from "../components/ItemCard";
 import AddItem from "../components/AddItem";
-import trashIcon from "../images/trash.png"
 import editIcon from "../images/edit.png"
 
 const API_URL = "http://localhost:5005"
@@ -38,7 +37,7 @@ function TreasureDetailsPage() {
 
     useEffect(() => {
         getTreasure()
-    }, [])
+    }, )
 
 
     return (

@@ -1,38 +1,59 @@
 import axios from "axios"
 import { useState, useEffect } from "react";
 import TreasureCard from "../components/TreasureCard";
+import SearchTreasure from "../components/SearchTreasure";
 
 const API_URL = "http://localhost:5005"
 
 function TreasureListPage() {
     const [treasure, setTreasure] = useState([])
+    const [treasureData, setTreasureData] = useState([])
 
     const getAllTreasure = () => {
         const storedToken = localStorage.getItem('authToken');
 
         axios
             .get(`${API_URL}/api/treasure`,
-            { headers: { Authorization: `Bearer ${storedToken}` } }
+                { headers: { Authorization: `Bearer ${storedToken}` } }
             )
             .then(response => setTreasure(response.data))
             .catch(err => console.log(err))
     }
 
+    const filterTreasure = (str) => {
+        let filteredTreasure
+        
+        if (str === "") {
+            filteredTreasure = treasure
+        } else {
+            filteredTreasure = treasure.filter(treasure => {
+                return treasure.title.toLowerCase().includes(str.toLowerCase())
+            })
+            console.log(filteredTreasure.length)
+        }
+
+        setTreasure(filteredTreasure)
+    }
+
+
     useEffect(() => {
         getAllTreasure()
     }, [])
 
-    
-    return ( 
+  
+    return (
         <div className="overview">
+<div className="search-bar">
+            <SearchTreasure filterTreasure={filterTreasure} />
+            </div>
 
-        {treasure.map(treasure => {
-            return (
-                <TreasureCard key={treasure._id} {...treasure} />
-            )
-        })}
-    </div>
-);
+            {treasure.map(treasure => {
+                return (
+                    <TreasureCard key={treasure._id} {...treasure} />
+                )
+            })}
+        </div>
+    );
 }
 
 export default TreasureListPage;

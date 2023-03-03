@@ -36,7 +36,7 @@ function EditItemPage() {
                 setImageUrl(response.data.imageUrl)
                 setAllowSubmit(true);
             })
-            .catch(err => console.log("Error while uploading the file: ", err));
+            .catch(err => console.log("Error while uploading the file: ", err)) 
     };
 
 
@@ -113,9 +113,7 @@ function EditItemPage() {
                     </div>
 
 
-                    {allowSubmit ? <button className="form-button" type="submit">Save changes</button> : <button className="form-button-edited-disabled">Save changes</button>}
-
-                    <button className="delete-button" onClick={handleDeleteProject}>Delete Item</button>
+                    {allowSubmit ? <button className="form-button" type="submit">Save changes</button> : <button className="form-button-edited-disabled" onClick={"You didnt make any change"}>Save changes</button>}
                 </form>
 
 
