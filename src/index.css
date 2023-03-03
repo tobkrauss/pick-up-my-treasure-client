@@ -91,26 +91,26 @@ margin-left: 65vw ;
  
 .details-icon {
   display: flex;
-  flex-direction: row;
-  margin-left: 22vw;
-  margin-bottom: 0.5vh;
+	flex-direction: row;  
+  justify-content: center;
+  align-items: center;
 }
 
 .img-edit {
-  color: #000000; /* default color */
+  color: #000000;
+  margin-left: 24vw;
 }
 
 .img-edit:hover {
-  color: #ff0000; /* color when hovered */
-  position: relative; /* make the pseudo-element relative to the icon */
+  color: #ff0000; 
+  position: relative; 
 }
 
 .img-edit:hover::before {
-  content: "Edit Treasure"; /* text to be displayed */
-  position: absolute; /* position the text within the icon */
-  top: -50px; /* adjust the distance from the icon */
-  left: 0%; /* center the text horizontally */
-  transform: translateX(-50%); /* center the text horizontally */
+  content: "Edit"; 
+  position: absolute;
+  top: -40px; 
+  left: -20%; 
   background-color: darkgrey; /* background color of the text */
   color: #ffffff; /* color of the text */
   padding: 5px; /* add some padding to the text */
@@ -127,11 +127,10 @@ margin-left: 65vw ;
 }
 
 .img-delete:hover::before {
-  content: "Delete Treasure"; /* text to be displayed */
+  content: "Delete"; /* text to be displayed */
   position: absolute; /* position the text within the icon */
-  top: -50px; /* adjust the distance from the icon */
-  left: 100%; /* center the text horizontally */
-  transform: translateX(-50%); /* center the text horizontally */
+  top: -40px; /* adjust the distance from the icon */
+  left: 10%; /* center the text horizontally */
   background-color: red; /* background color of the text */
   color: #ffffff; /* color of the text */
   padding: 5px; /* add some padding to the text */
@@ -173,4 +172,106 @@ margin-left: 65vw ;
   align-items: center;
 }
  
+
+
+
+.item-form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 20px;
+  margin-bottom: 10px;
+  
+}
+
+.item-edit {
+  color: #000000;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 1px;
+}
+
+.form-group input[type="text"] {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.form-group .file-input {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.form-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.form-button:hover {
+  background-color: #0069d9;
+}
+
+
+
+.item-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  min-width: 300px;
+}
+
+
+.item-icon {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10vw;
+  margin-bottom: 0.5vh;
+}
+
+.item-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+	align-content: flex-start;
+  margin: 40px 20px;
+}
+
+.add-item-button {
+  height: 10vh;
+  padding: 10px 30px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10%;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 40px;
+}
 

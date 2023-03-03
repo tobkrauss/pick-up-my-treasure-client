@@ -19,20 +19,20 @@ function AddItem(props) {
 
     const handleFileUpload = (e) => {
         const uploadData = new FormData();
-     
+
         // imageUrl => this name has to be the same as in the model since we pass
         // req.body to .create() method when creating a new Item in '/api/items' POST route
         uploadData.append("imageUrl", e.target.files[0]);
-     
+
         axios.post("http://localhost:5005/api/upload", uploadData,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-            )
-          .then(response => {
-            // response carries "fileUrl" which we can use to update the state
-            setImageUrl(response.data.imageUrl);
-          })
-          .catch(err => console.log("Error while uploading the file: ", err));
-      };
+            { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
+            .then(response => {
+                // response carries "fileUrl" which we can use to update the state
+                setImageUrl(response.data.imageUrl);
+            })
+            .catch(err => console.log("Error while uploading the file: ", err));
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -43,8 +43,8 @@ function AddItem(props) {
 
         axios
             .post(`${API_URL}/api/items`, requestBody,
-            { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
             .then(response => {
                 setTitle("")
                 setDescription("")
@@ -59,25 +59,29 @@ function AddItem(props) {
 
     return (
         <div className="AddTask">
-            <h3>Add new Item</h3>
-
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title</label>
-                <input type="text" name="title" value={title} onChange={handleTitleChange} />
-
-                <label htmlFor="description">Description</label>
-                <input type="text" name="description" value={description} onChange={handleDescriptionChange} />
-
-                <label htmlFor="category">Category</label>
-                <input type="text" name="category" value={category} onChange={handleCategoryChange} />
-
-                <label htmlFor="imageUrl">Image</label>
-                <input type="file" onChange={(e) => handleFileUpload(e)} />
-
+            <form className="item-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="title">Title</label>
+                    <input type="text" name="title" value={title} onChange={handleTitleChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="description">Description</label>
+                    <input type="text" name="description" value={description} onChange={handleDescriptionChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="category">Category</label>
+                    <input type="text" name="category" value={category} onChange={handleCategoryChange} />
+                </div>
+                
+                <div className="form-group">
                 <label htmlFor="condition">Condition</label>
                 <input type="text" name="condition" value={condition} onChange={handleConditionChange} />
-
-                <button type="submit">Submit</button>
+                </div>
+                <div className="form-group">
+                <label htmlFor="imageUrl">Image</label>
+                <input type="file" onChange={(e) => handleFileUpload(e)} />
+                </div>
+                <button className="form-button" type="submit">Add item</button>
             </form>
         </div>
     );
