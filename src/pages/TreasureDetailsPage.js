@@ -44,10 +44,11 @@ function TreasureDetailsPage() {
     return (
         <div>
             <div>
+                <div className="treasure-details-container">
+                <div className="treasure-details"></div>
                 <div className="treasure-details">
                     {treasure && (
                         <>
-                            
                             <div className="details-icon">
                                 <div className="img-edit">
                                     <Link to={`/treasure/edit/${treasureId}`}>
@@ -56,15 +57,16 @@ function TreasureDetailsPage() {
                                 </div>
                                
                             </div>
-                            <div className="treasure-card">
+                            <div className="card">
                                 <img src={treasure.imageUrl} alt="treasure" style={{ width: 400, borderRadius: 5 }} />
-                                <div className="card-headline">{treasure.title}</div>
+                                <div className="card-title">{treasure.title}</div>
                                 <div className="card-description">{treasure.description}</div>
                                 {/* <p>{treasure.owner}</p> */}
-                                <div className="card-address">{treasure.street}, {treasure.zipcode} {treasure.city}</div>
+                                <div className="card-address">📌 {treasure.street}, {treasure.zipcode} {treasure.city}</div>
                             </div>
                         </>
                     )}
+                </div>
                 </div>
                 <div className="item-row">
                     {treasure && treasure.items.map(item => {
