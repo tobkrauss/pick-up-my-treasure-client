@@ -28,9 +28,9 @@ function ItemDetailsPage() {
     }, [])
 
 
-    if (item){
-    return (
-            <div className="ProjectDetails">
+    if (item) {
+        return (
+            <div className="treasure-details">
                 {item && (
                     <>
                         <img src={item.imageUrl} alt="item" style={{ width: 200 }} />
@@ -41,12 +41,15 @@ function ItemDetailsPage() {
                     </>
                 )}
 
-                <Link to={`/treasure/${item.treasure}`}>
-                    <button>Back to Treasure</button>
-                </Link>
+                <div className="two-buttons">
                 <Link to={`/items/edit/${itemId}`}>
-                    <button>Edit Item</button>
-                </Link>
+                        <button className="again-button">Edit Item again</button>
+                    </Link>
+                    <Link to={`/treasure/${item.treasure}`}>
+                        <button className="form-button">Back to Treasure</button>
+                    </Link>
+                    
+                </div>
             </div>
         )
     };

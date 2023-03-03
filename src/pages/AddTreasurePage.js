@@ -26,20 +26,20 @@ function AddTreasurePage() {
 
     const handleFileUpload = (e) => {
         const uploadData = new FormData();
-     
+
         // imageUrl => this name has to be the same as in the model since we pass
         // req.body to .create() method when creating a new Treasure in '/api/treasure' POST route
         uploadData.append("imageUrl", e.target.files[0]);
-     
+
         axios.post("http://localhost:5005/api/upload", uploadData,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-            )
-          .then(response => {
-            // response carries "fileUrl" which we can use to update the state
-            setImageUrl(response.data.imageUrl);
-          })
-          .catch(err => console.log("Error while uploading the file: ", err));
-      };
+            { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
+            .then(response => {
+                // response carries "fileUrl" which we can use to update the state
+                setImageUrl(response.data.imageUrl);
+            })
+            .catch(err => console.log("Error while uploading the file: ", err));
+    };
 
     const handleSubmmit = (e) => {
         e.preventDefault()
@@ -47,7 +47,7 @@ function AddTreasurePage() {
 
         const requestBody = { owner, title, description, imageUrl, street, zipcode, city }
 
-        
+
 
         axios
             .post(`${API_URL}/api/new-treasure`, requestBody,
@@ -61,39 +61,52 @@ function AddTreasurePage() {
                 setStreet("")
                 setZipcode(10115)
                 setCity("")
-                
+
                 navigate("/treasure")
             })
             .catch(err => console.log(err))
     }
 
     return (
-        <div className="AddProject">
+        <div>
             <h3>Add Treasure</h3>
 
-            <form onSubmit={handleSubmmit}>
-                <label htmlFor="owner">Owner</label>
-                <input type="text" name="owner" value={owner} onChange={handleOwnerChange} />
+            <form onSubmit={handleSubmmit} className="add-form">
+                <div className="form-group">
+                    <label htmlFor="owner">Owner</label>
+                    <input type="text" name="owner" value={owner} onChange={handleOwnerChange} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="title">Title</label>
+                    <input type="text" name="title" value={title} onChange={handleTitleChange} />
+                </div>
 
-                <label htmlFor="title">Title</label>
-                <input type="text" name="title" value={title} onChange={handleTitleChange} />
+                <div className="form-group">
+                    <label htmlFor="description">Description</label>
+                    <input type="text" name="description" value={description} onChange={handleDescriptionChange} />
+                </div>
 
-                <label htmlFor="description">Description</label>
-                <input type="text" name="description" value={description} onChange={handleDescriptionChange} />
+                <div className="form-group">
+                    <label htmlFor="street">Street</label>
+                    <input type="text" name="street" value={street} onChange={handleStreetChange} />
+                </div>
 
-                <label htmlFor="image">Image</label>
-                <input type="file" onChange={(e) => handleFileUpload(e)} />
+                <div className="form-group">
+                    <label htmlFor="zipcode">Zipcode</label>
+                    <input type="number" name="zipcode" value={zipcode} onChange={handleZipcodeChange} />
+                </div>
 
-                <label htmlFor="street">Street</label>
-                <input type="text" name="street" value={street} onChange={handleStreetChange} />
+                <div className="form-group">
+                    <label htmlFor="city">City</label>
+                    <input type="text" name="city" value={city} onChange={handleCityChange} />
+                </div>
 
-                <label htmlFor="zipcode">Zipcode</label>
-                <input type="number" name="zipcode" value={zipcode} onChange={handleZipcodeChange} />
+                <div className="form-group">
+                    <label htmlFor="image">Image</label>
+                    <input type="file" onChange={(e) => handleFileUpload(e)} />
+                </div>
 
-                <label htmlFor="city">City</label>
-                <input type="text" name="city" value={city} onChange={handleCityChange} />
-
-                <button type="submit">Submit</button>
+                <button className="form-button" type="submit">Add Treasure</button>
             </form>
 
         </div>

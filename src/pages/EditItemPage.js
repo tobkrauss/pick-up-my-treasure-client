@@ -24,86 +24,100 @@ function EditItemPage() {
 
     const handleFileUpload = (e) => {
         const uploadData = new FormData();
-    
+
         uploadData.append("imageUrl", e.target.files[0]);
-     
+
         axios.post("http://localhost:5005/api/upload", uploadData,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-            )
-          .then(response => {
-            setImageUrl(response.data.imageUrl);
-          })
-          .catch(err => console.log("Error while uploading the file: ", err));
-      };
+            { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
+            .then(response => {
+                setImageUrl(response.data.imageUrl);
+            })
+            .catch(err => console.log("Error while uploading the file: ", err));
+    };
 
 
     useEffect(() => {
         axios
-          .get(`${API_URL}/api/items/${itemId}`,
-          { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
-          .then(response => {
-            const oneItem = response.data
-            setTitle(oneItem.title)
+            .get(`${API_URL}/api/items/${itemId}`,
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
+            .then(response => {
+                const oneItem = response.data
+                setTitle(oneItem.title)
                 setDescription(oneItem.description)
                 setCategory(oneItem.category)
                 setImageUrl(oneItem.imageUrl)
                 setCondition(oneItem.condition)
-          })
-          .catch(err => console.log(err))
-      }, [itemId])
-    
-      const handleSubmit = (e) => {
+            })
+            .catch(err => console.log(err))
+    }, [itemId])
+
+    const handleSubmit = (e) => {
         e.preventDefault()
         const requestBody = { title, description, category, imageUrl, condition }
-    
+
         axios
-          .put(`${API_URL}/api/items/${itemId}`, requestBody,
-          { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
-          .then(response => {
-            navigate(`/items/${itemId}`)
-          })
-      }
-    
-      const handleDeleteProject = (e) => {
+            .put(`${API_URL}/api/items/${itemId}`, requestBody,
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
+            .then(response => {
+                navigate(`/items/${itemId}`)
+            })
+    }
+
+    const handleDeleteProject = (e) => {
         axios
-        .delete(`${API_URL}/api/items/${itemId}`,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
-        .then(response => {
-            navigate("/treasure")
-        })
-        .catch(err => console.log(err))
-      }
-      
+            .delete(`${API_URL}/api/items/${itemId}`,
+                { headers: { Authorization: `Bearer ${storedToken}` } }
+            )
+            .then(response => {
+                navigate("/treasure")
+            })
+            .catch(err => console.log(err))
+    }
 
-    return ( 
-        <div className="EditProjectPage">
-        <h3>Edit Item</h3>
-  
-        <form onSubmit={handleSubmit}>
-                <label htmlFor="title">Title</label>
-                <input type="text" name="title" value={title} onChange={handleTitleChange} />
 
-                <label htmlFor="description">Description</label>
-                <input type="text" name="description" value={description} onChange={handleDescriptionChange} />
+    return (
+        <div>
+            <div>
+                <h3>Edit Item</h3>
 
-                <label htmlFor="category">Category</label>
-                <input type="text" name="category" value={category} onChange={handleCategoryChange} />
+                <form onSubmit={handleSubmit} className="edit-form">
+                    <div className="form-group">
+                        <label htmlFor="title">Title</label>
+                        <input type="text" name="title" value={title} onChange={handleTitleChange} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="description">Description</label>
+                        <input type="text" name="description" value={description} onChange={handleDescriptionChange} />
+                    </div>
 
-                <label htmlFor="imageUrl">Image</label>
-                <input type="file" onChange={(e) => handleFileUpload(e)} />
+                    <div className="form-group">
+                        <label htmlFor="category">Category</label>
+                        <input type="text" name="category" value={category} onChange={handleCategoryChange} />
+                    </div>
 
-                <label htmlFor="condition">Condition</label>
-                <input type="text" name="condition" value={condition} onChange={handleConditionChange} />
+                    <div className="form-group">
+                        <label htmlFor="condition">Condition</label>
+                        <input type="text" name="condition" value={condition} onChange={handleConditionChange} />
+                    </div>
 
-                <button type="submit">Submit</button>
-            </form>
+                    <div className="form-group file-input">
+                        <label htmlFor="image">Choose Image</label>
+                        <input type="file" onChange={(e) => handleFileUpload(e)} />
+                    </div>
 
-            <button onClick={handleDeleteProject}>Delete Item</button>
+
+                    <button className="form-button" type="submit">Save changes</button>
+
+                    <button className="delete-button" onClick={handleDeleteProject}>Delete Item</button>
+                </form>
+
+
+            </div>
         </div>
-     );
+    );
 }
 
 export default EditItemPage;
