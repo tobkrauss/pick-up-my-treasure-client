@@ -12,16 +12,20 @@ import TreasureDetailsPage from './pages/TreasureDetailsPage';
 import EditTreasurePage from './pages/EditTreasurePage';
 import EditItemPage from './pages/EditItemPage';
 import ItemDetailsPage from './pages/ItemDetailsPage';
+import { useState } from 'react';
+
 
 
 function App() {
+  const [treasure, setTreasure] = useState([])
+  
   return (
     <div className="App">
       <Navbar />
 
       <Routes>
-        <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/treasure" element={<IsPrivate> <TreasureListPage /> </IsPrivate>}
+        <Route exact path="/" element={<HomePage treasure={treasure}/>}  />
+        <Route exact path="/treasure" element={<IsPrivate> <TreasureListPage treasure={treasure} setTreasure={setTreasure} /> </IsPrivate> }
         />
         <Route exact path="/treasure/:treasureId"  element={ <IsPrivate> <TreasureDetailsPage /> </IsPrivate> }
         />

@@ -1,11 +1,11 @@
 import Mapbox from "../components/Mapbox";
 
 
-function HomePage() {
+function HomePage({treasure}) {
     return (
         <div>
             <h1>Home</h1>
-            <Mapbox />
+            <Mapbox treasure={treasure} />
         </div>
     );
 }
