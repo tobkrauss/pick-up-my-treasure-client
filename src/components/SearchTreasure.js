@@ -9,6 +9,7 @@ function SearchTreasure(props) {
         setQuery(e.target.value)
         props.filterTreasure(e.target.value)
       }
+      
     
     return ( 
         <div>

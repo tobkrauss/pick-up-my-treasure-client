@@ -10,30 +10,34 @@ function TreasureListPage() {
     const [treasureData, setTreasureData] = useState([])
 
     const getAllTreasure = () => {
-        const storedToken = localStorage.getItem('authToken');
+        const storedToken = localStorage.getItem('authToken');  
 
         axios
             .get(`${API_URL}/api/treasure`,
                 { headers: { Authorization: `Bearer ${storedToken}` } }
             )
-            .then(response => setTreasure(response.data))
+            .then((response) => {
+                const data = response.data;
+                setTreasure(data);
+                setTreasureData(data);
+              })
             .catch(err => console.log(err))
     }
 
     const filterTreasure = (str) => {
-        let filteredTreasure
-        
+        let filteredTreasure;
+      
         if (str === "") {
-            filteredTreasure = treasure
+          filteredTreasure = treasureData;
         } else {
-            filteredTreasure = treasure.filter(treasure => {
-                return treasure.title.toLowerCase().includes(str.toLowerCase())
-            })
-            console.log(filteredTreasure.length)
+          filteredTreasure = treasureData.filter((treasure) => {
+            return treasure.title.toLowerCase().includes(str.toLowerCase());
+          });
+          console.log(filteredTreasure.length);
         }
-
-        setTreasure(filteredTreasure)
-    }
+      
+        setTreasure(filteredTreasure);
+      };
 
 
     useEffect(() => {
