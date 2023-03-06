@@ -2,8 +2,7 @@ import mapboxgl from "mapbox-gl"
 import { useEffect } from "react";
 
 
-
-function Mapbox() {
+function Mapbox2({ longitude, latitude }) {
 
     function initializeMap() {
         const map = createMap();
@@ -14,8 +13,8 @@ function Mapbox() {
         let map = new mapboxgl.Map({
             container: "map",
             style: "mapbox://styles/mapbox/outdoors-v12",
-            center: [13.466976165771484, 52.519065856933594],
-            zoom: 11,
+            center: [longitude, latitude],
+            zoom: 14,
             projection: "globe"
         })
 
@@ -26,7 +25,7 @@ function Mapbox() {
             color: "red",
             draggable: true
         })
-        .setLngLat([13.466976165771484, 52.519065856933594])
+        .setLngLat([longitude, latitude])
         .addTo(map)
 
         return Map;
@@ -42,11 +41,11 @@ useEffect(() => {
 
 return (
 
-    <div id="map" style={{ width: "70vw", height: "80vh" }}>
+    <div id="map" style={{ width: "450px", height: "450px" }}>
     </div>
 
 );
 
 }
 
-export default Mapbox;
+export default Mapbox2;
