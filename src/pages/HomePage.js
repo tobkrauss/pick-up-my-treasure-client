@@ -1,8 +1,13 @@
-function HomePage() {
-    return ( 
+import Mapbox from "../components/Mapbox";
 
-        <h1>Home</h1>
-     );
+
+function HomePage() {
+    return (
+        <div>
+            <h1>Home</h1>
+            <Mapbox />
+        </div>
+    );
 }
 
 export default HomePage;

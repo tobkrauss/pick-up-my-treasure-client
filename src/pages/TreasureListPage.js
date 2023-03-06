@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import TreasureCard from "../components/TreasureCard";
 import SearchTreasure from "../components/SearchTreasure";
 
-const API_URL = "http://localhost:5005"
+const API_URL = process.env.REACT_APP_API_URL
 
 function TreasureListPage() {
     const [treasure, setTreasure] = useState([])
