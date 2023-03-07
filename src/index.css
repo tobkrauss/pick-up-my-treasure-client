@@ -143,6 +143,10 @@ margin-left: 65vw ;
     position: relative;
   }
 
+.popup-image {
+  max-width: 200px;
+  max-height: 200px;
+}
 
 /* .overlay {
   position: absolute;
