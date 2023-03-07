@@ -1,10 +1,13 @@
 import axios from "axios"
 import { useState } from "react"
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 const API_URL = "http://localhost:5005"
 
 function AddItem(props) {
     const [allowSubmit, setAllowSubmit] = useState(false)
+    const { user } = useContext(AuthContext);
     
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -42,7 +45,7 @@ function AddItem(props) {
 
         const { treasureId } = props
 
-        const requestBody = { title, description, category, imageUrl, condition, treasureId }
+        const requestBody = { title, description, category, imageUrl, condition, user, treasureId }
 
         axios
             .post(`${API_URL}/api/items`, requestBody,

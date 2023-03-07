@@ -1,6 +1,5 @@
 import Mapbox from "../components/Mapbox";
 import SearchMarkers from "../components/SearchMarkers";
-import axios from "axios";
 import { useState } from "react";
 
 

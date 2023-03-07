@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 const API_URL = "http://localhost:5005"
 
 function AddTreasurePage() {
     const [allowSubmit, setAllowSubmit] = useState(false)
+    const { user } = useContext(AuthContext);
 
     const [owner, setOwner] = useState("")
     const [title, setTitle] = useState("")
@@ -48,7 +51,7 @@ function AddTreasurePage() {
         e.preventDefault()
 
 
-        const requestBody = { owner, title, description, imageUrl, street, zipcode, city }
+        const requestBody = { owner, title, description, imageUrl, street, zipcode, city, user }
 
 
 

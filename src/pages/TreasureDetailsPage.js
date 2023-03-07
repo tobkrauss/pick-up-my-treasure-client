@@ -14,17 +14,23 @@ function TreasureDetailsPage() {
     const [treasure, setTreasure] = useState(null)
     const { treasureId } = useParams()
     const [showForm, setShowForm] = useState(true)
+    const [currentUser, setCurrentUser] = useState(null)
 
-
+    const storedToken = localStorage.getItem('authToken');
 
     const toggleShowForm = () => {
         setShowForm(!showForm)
     }
-
+    useEffect(() => {
+    axios.get(`${API_URL}/auth/verify`,
+        { headers: { Authorization: `Bearer ${storedToken}` } })
+        .then(response => {
+            setCurrentUser(response.data);
+        })
+        .catch(err => console.log(err));
+    },[]);
 
     const getTreasure = () => {
-        const storedToken = localStorage.getItem('authToken');
-
         axios
             .get(`${API_URL}/api/treasure/${treasureId}`,
                 { headers: { Authorization: `Bearer ${storedToken}` } }
@@ -43,7 +49,7 @@ function TreasureDetailsPage() {
                             console.log(coordinates[0])
                             console.log(coordinates[1])
                             setTreasure(oneTreasure);
-            
+
                         }
                     })
                     .catch(err => console.log(err));
@@ -52,7 +58,7 @@ function TreasureDetailsPage() {
     }
     useEffect(() => {
         getTreasure()
-    },)
+    },[])
 
 
     return (
@@ -61,28 +67,29 @@ function TreasureDetailsPage() {
                 <div className="treasure-details-container">
                     <div className="mapbox">
                         {treasure !== null &&
-                        < Mapbox2 longitude={treasure?.coordinates[0]} latitude={treasure?.coordinates[1]} />}
+                            < Mapbox2 longitude={treasure?.coordinates[0]} latitude={treasure?.coordinates[1]} />}
                     </div>
                     <div className="treasure-details">
-                        {treasure && (
-                            <>
-                                <div className="details-icon">
-                                    <div className="img-edit">
-                                        <Link to={`/treasure/edit/${treasureId}`}>
-                                            <img src={editIcon} alt="trash" style={{ height: 25, marginRight: 5, hover: "red" }} />
-                                        </Link>
-                                    </div>
-
-                                </div>
-                                <div className="card">
-                                    <img src={treasure.imageUrl} alt="treasure" style={{ width: 400, borderRadius: 5 }} />
-                                    <div className="card-title">{treasure.title}</div>
-                                    <div className="card-description">{treasure.description}</div>
-                                    {/* <p>{treasure.owner}</p> */}
-                                    <div className="card-address">📌 {treasure.street}, {treasure.zipcode} {treasure.city}</div>
-                                </div>
-                            </>
-                        )}
+                        <>
+                            <div className="details-icon">
+                                {currentUser && treasure && currentUser._id === treasure.user &&
+                                    <>
+                                        <div className="img-edit">
+                                            <Link to={`/treasure/edit/${treasureId}`}>
+                                                <img src={editIcon} alt="edit" style={{ height: 25, marginRight: 5 }} />
+                                            </Link>
+                                        </div>
+                                    </>
+                                }
+                            </div>
+                            <div className="card">
+                                <img src={treasure?.imageUrl} alt="treasure" style={{ width: 400, borderRadius: 5 }} />
+                                <div className="card-title">{treasure?.title}</div>
+                                <div className="card-description">{treasure?.description}</div>
+                                {/* <p>{treasure.owner}</p> */}
+                                <div className="card-address">📌 {treasure?.street}, {treasure?.zipcode} {treasure?.city}</div>
+                            </div>
+                        </>
                     </div>
                 </div>
                 <div className="item-row">
