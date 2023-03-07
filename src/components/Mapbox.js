@@ -1,3 +1,4 @@
+import React from "react";
 import mapboxgl from "mapbox-gl"
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -5,40 +6,53 @@ import axios from "axios";
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoidG9ia3JhdXNzIiwiYSI6ImNsZXdrdW5jYzBmdG8zdmtjNzE3MmlmemMifQ.DS6DX6bmuHXqFRqJOW-f7A"
 const API_URL = process.env.REACT_APP_API_URL
 
-function Mapbox() {
+function Mapbox(props) {
   const [treasure, setTreasure] = useState([]);
+  const [filteredTreasure, setFilteredTreasure] = useState([])
+
+  let map 
 
   useEffect(() => {
-
-      
-
-      axios
-          .get(`${API_URL}/api/treasure`,
-      
-          )
-          .then((response) => {
-              const data = response.data;
-              setTreasure(data);
-            })
-          .catch(err => console.log(err))
-  
-
+    map = createMap()
+    axios
+      .get(`${API_URL}/api/treasure`,
+      )
+      .then((response) => {
+        const data = response.data;
+        setTreasure(data)
+        setFilteredTreasure(data)
+      })
+      .catch(err => console.log(err))
   }, []);
 
   useEffect(() => {
     if (treasure.length > 0) {
-      const map = createMap();
-      addMarkers(map, treasure);
+      let filteredMarker;
+    console.log("STARTING")
+      if (props.query === "") {
+        filteredMarker = treasure;
+        console.log(filteredMarker)
+      } else {
+        filteredMarker = treasure.filter((treasure) => {
+          return treasure.title.toLowerCase().includes(props.query.toLowerCase());
+        });
+    
+      setFilteredTreasure(filteredMarker);
+    };
+    console.log(filteredMarker)
+      addMarkers(map, filteredMarker);
     }
-  }, [treasure])
+  }, [treasure, props.query])
+
+
 
   function createMap() {
     mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
     let map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/outdoors-v12",
-      center: [13.466976165771484, 52.519065856933594],
-      zoom: 11,
+      center: [13.408510208129883, 52.52079391479492],
+      zoom: 12,
       projection: "globe"
     });
 
@@ -58,9 +72,9 @@ function Mapbox() {
           if (features.length > 0) {
             const coordinates = features[0].center;
             treasureItem.coordinates = coordinates;
-            console.log(coordinates)
 
-            const popup = new mapboxgl.Popup().setHTML(`
+            const popup = new mapboxgl.Popup()
+              .setHTML(`
       <h3>${treasureItem.title}</h3>
       <img class="popup-image" src=${treasureItem.imageUrl} alt="image" />
       <div> 
@@ -76,13 +90,10 @@ function Mapbox() {
               .setPopup(popup)
               .addTo(map);
           }
+
         });
     });
   }
-
-  useEffect(() => {
-    createMap();
-  }, [])
 
 
   return (

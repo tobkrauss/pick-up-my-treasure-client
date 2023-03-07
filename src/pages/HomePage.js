@@ -1,11 +1,21 @@
 import Mapbox from "../components/Mapbox";
+import SearchMarkers from "../components/SearchMarkers";
+import axios from "axios";
+import { useState } from "react";
 
 
-function HomePage({treasure}) {
+function HomePage() {
+    const [query, setQuery] = useState("")
+
+    
     return (
+        <div className="home-page">
+        <div className="search-bar">
+            <SearchMarkers query={query} setQuery={setQuery} />
+            </div>
         <div>
-            <h1>Home</h1>
-            <Mapbox treasure={treasure} />
+            <Mapbox query={query} />
+        </div>
         </div>
     );
 }
