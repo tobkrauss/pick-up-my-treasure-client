@@ -3,48 +3,49 @@ import mapboxgl from "mapbox-gl"
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoidG9ia3JhdXNzIiwiYSI6ImNsZXdrdW5jYzBmdG8zdmtjNzE3MmlmemMifQ.DS6DX6bmuHXqFRqJOW-f7A"
 const API_URL = process.env.REACT_APP_API_URL
 
 function Mapbox(props) {
   const [treasure, setTreasure] = useState([]);
   const [filteredTreasure, setFilteredTreasure] = useState([])
-
-  let map 
+  const [mapLoaded, setMapLoaded] = useState(false)
 
   useEffect(() => {
-    map = createMap()
-    axios
-      .get(`${API_URL}/api/treasure`,
-      )
-      .then((response) => {
-        const data = response.data;
-        setTreasure(data)
-        setFilteredTreasure(data)
-      })
-      .catch(err => console.log(err))
+    const map = createMap();
+    addMarkers(filteredTreasure, map);
+    setMapLoaded(true);
+    return () => {
+      map.remove();
+    };
   }, []);
 
   useEffect(() => {
-    if (treasure.length > 0) {
+    axios
+      .get(`${API_URL}/api/treasure`)
+      .then((response) => {
+        const data = response.data;
+        setTreasure(data);
+        setFilteredTreasure(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    if (mapLoaded && treasure.length > 0) {
       let filteredMarker;
-    console.log("STARTING")
       if (props.query === "") {
-        filteredMarker = treasure;
-        console.log(filteredMarker)
+        filteredMarker = filteredTreasure;
       } else {
-        filteredMarker = treasure.filter((treasure) => {
+        filteredMarker = filteredTreasure.filter((treasure) => {
           return treasure.title.toLowerCase().includes(props.query.toLowerCase());
         });
-    
-      setFilteredTreasure(filteredMarker);
-    };
-    console.log(filteredMarker)
-      addMarkers(map, filteredMarker);
+      }
+      const map = createMap();
+      addMarkers(filteredMarker, map);
     }
-  }, [treasure, props.query])
-
-
+  }, [mapLoaded, treasure, props.query]);
 
   function createMap() {
     mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
@@ -53,7 +54,6 @@ function Mapbox(props) {
       style: "mapbox://styles/mapbox/outdoors-v12",
       center: [13.408510208129883, 52.52079391479492],
       zoom: 12,
-      projection: "globe"
     });
 
     const nav = new mapboxgl.NavigationControl();
@@ -62,7 +62,7 @@ function Mapbox(props) {
     return map;
   }
 
-  function addMarkers(map, treasure) {
+  function addMarkers(treasure, map) {
     treasure.forEach(treasureItem => {
       const address = `${treasureItem.street}, ${treasureItem.zipcode} ${treasureItem.city}`;
       const mapboxApiEndpoint = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${MAPBOX_ACCESS_TOKEN}`;

@@ -16,7 +16,6 @@ function SearchMarkers(props) {
             <label htmlFor="name"></label>
             <input type="text" name="name" value={props.query} placeholder="Type here to search for treasure..." onChange={(e) => handleSelect(e)}/>
             </div>
-            <button className="form-button">Search</button>
         </form>
     
         </div>
