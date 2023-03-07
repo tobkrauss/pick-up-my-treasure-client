@@ -24,7 +24,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route exact path="/" element={<HomePage treasure={treasure}/>}  />
+        <Route exact path="/" element={ <HomePage treasure={treasure}/> }  />
         <Route exact path="/treasure" element={<IsPrivate> <TreasureListPage treasure={treasure} setTreasure={setTreasure} /> </IsPrivate> }
         />
         <Route exact path="/treasure/:treasureId"  element={ <IsPrivate> <TreasureDetailsPage /> </IsPrivate> }

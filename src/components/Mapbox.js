@@ -1,11 +1,36 @@
 import mapboxgl from "mapbox-gl"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoidG9ia3JhdXNzIiwiYSI6ImNsZXdrdW5jYzBmdG8zdmtjNzE3MmlmemMifQ.DS6DX6bmuHXqFRqJOW-f7A"
+const API_URL = process.env.REACT_APP_API_URL
 
-function Mapbox({ treasure }) {
+function Mapbox() {
+  const [treasure, setTreasure] = useState([]);
 
+  useEffect(() => {
+
+      
+
+      axios
+          .get(`${API_URL}/api/treasure`,
+      
+          )
+          .then((response) => {
+              const data = response.data;
+              setTreasure(data);
+            })
+          .catch(err => console.log(err))
+  
+
+  }, []);
+
+  useEffect(() => {
+    if (treasure.length > 0) {
+      const map = createMap();
+      addMarkers(map, treasure);
+    }
+  }, [treasure])
 
   function createMap() {
     mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
@@ -19,8 +44,6 @@ function Mapbox({ treasure }) {
 
     const nav = new mapboxgl.NavigationControl();
     map.addControl(nav, "top-left");
-
-    addMarkers(map, treasure);
 
     return map;
   }
