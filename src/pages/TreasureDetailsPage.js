@@ -7,7 +7,7 @@ import AddItem from "../components/AddItem";
 import editIcon from "../images/edit.png"
 import Mapbox2 from "../components/Mapbox2";
 
-const API_URL = "http://localhost:5005"
+const API_URL = process.env.REACT_APP_API_URL
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoidG9ia3JhdXNzIiwiYSI6ImNsZXdrdW5jYzBmdG8zdmtjNzE3MmlmemMifQ.DS6DX6bmuHXqFRqJOW-f7A"
 
 function TreasureDetailsPage() {

@@ -3,7 +3,7 @@ import { useState } from "react"
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
-const API_URL = "http://localhost:5005"
+const API_URL = process.env.REACT_APP_API_URL
 
 function AddItem(props) {
     const [allowSubmit, setAllowSubmit] = useState(false)

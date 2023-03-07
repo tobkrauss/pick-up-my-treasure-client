@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 
-const API_URL = "http://localhost:5005"
+const API_URL = process.env.REACT_APP_API_URL
 
 
 function EditItemPage() {
