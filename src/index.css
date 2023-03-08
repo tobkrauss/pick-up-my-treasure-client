@@ -55,6 +55,15 @@ margin-left: 65vw ;
   align-items: center;
 }
 
+.info-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.info-screen h1 {
+  margin-bottom: 100px;
+}
+
  .overview {
   display: flex;
 	flex-direction: row;
@@ -135,6 +144,13 @@ margin-left: 65vw ;
   border: 1px solid #F2F2F2;
   border-radius: 5px;
   position: relative;
+}
+
+.home-mapbox {
+  border: 3px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px #ccc;
+  margin-bottom: 100px;
 }
 
 .mapbox{
@@ -470,5 +486,27 @@ margin-left: 65vw ;
   font-size: 40px;
 }
 
+.footer{
+  width: 100vw;
+  height: 10vh;
+  background-color: lightgrey;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 
+}
 
+.footer-copyright {
+  margin-left: 5vw;
+}
+
+.footer-impressum{
+  display: flex;
+  flex-direction: row;
+  margin-right: 5vw;
+}
+
+.footer-impressum div {
+  margin-left: 2vw;
+}

@@ -1,21 +1,57 @@
 import Mapbox from "../components/Mapbox";
 import SearchMarkers from "../components/SearchMarkers";
 import { useState } from "react";
+import ArrowImage from "../images/arrow-down.png"
+import { Link } from "react-scroll";
 
 
 function HomePage() {
     const [query, setQuery] = useState("")
 
-    
+
     return (
         <div className="home-page">
-        <div className="search-bar">
-            <SearchMarkers query={query} setQuery={setQuery} />
+            <div className="info-screen">
+                <div>
+                    <h1>Here is a huge text</h1>
+                </div>
+                <div>
+                    <Link
+                        to="map-screen"
+                        smooth={true}
+                        duration={700}
+                        offset={-40}
+                        spy={true}
+                        exact="true"
+                        className="scroll-link"
+                    >
+                        <img src={ArrowImage} style={{ width: "400px" }} alt="" />
+                    </Link>
+                </div>
             </div>
-        <div>
-            <Mapbox query={query} />
+            <div id="map-screen">
+                <div className="search-bar">
+                    <SearchMarkers query={query} setQuery={setQuery} />
+                </div>
+                <div className="home-mapbox">
+                    <Mapbox query={query} />
+                </div>
+            </div>
+            <footer className="footer">
+                <div className="footer-copyright">
+                    Copyright © 2023 Tobias Krauß. All rights reserved
+                </div>
+                <div className="footer-impressum">
+                    <div>
+                        Datenschutz
+                    </div>
+                    <div>
+                        Impressum
+                    </div>
+                </div>
+            </footer>
         </div>
-        </div>
+
     );
 }
 
