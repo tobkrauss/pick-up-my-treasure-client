@@ -17,15 +17,15 @@ function HomePage() {
                 <div className="home-text">
                     The easiest solution to post, find and collect abandoned items on Berlin's sidewalks
                 </div>
-                <div>
-                <img src={Furnitures} style={{ width: "60vw" }} alt="" />
+                <div className="furniture-img">
+                <img src={Furnitures} style={{ width: "50vw" }} alt="" />
                 </div>
                 <div>
                     <Link
                         to="map-screen"
                         smooth={true}
                         duration={700}
-                        offset={-40}
+                        offset={-20}
                         spy={true}
                         exact="true"
                         className="scroll-link"

@@ -69,6 +69,10 @@ textarea {
   margin: 5vh auto 6vh;
 }
 
+.furniture-img {
+  margin-bottom: 4vh;
+}
+
 .overview {
   display: flex;
   flex-direction: row;

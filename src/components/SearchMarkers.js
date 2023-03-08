@@ -12,7 +12,7 @@ function SearchMarkers(props) {
         <form className="search-form">
         <div className="search-label">
             <label htmlFor="name"></label>
-            <input type="text" name="name" value={props.query} placeholder="Type here to search for treasure..." onChange={(e) => handleSelect(e)}/>
+            <input type="text" name="name" value={props.query} placeholder="Type here to search for your treasure... (e.g. bed, couch, etc.)" onChange={(e) => handleSelect(e)}/>
             </div>
         </form>
     
