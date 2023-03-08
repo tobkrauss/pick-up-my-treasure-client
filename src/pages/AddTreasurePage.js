@@ -68,7 +68,7 @@ function AddTreasurePage() {
                 setZipcode(10115)
                 setCity("")
                 setAllowSubmit(false)
-
+console.log("HALLOOOO")
                 navigate("/treasure")
             })
             .catch(err => console.log(err))

@@ -80,7 +80,7 @@ function EditTreasurePage() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then(response => {
-        navigate("/treasure")
+        navigate('/treasure');
       })
       .catch(err => console.log(err))
   }
@@ -128,8 +128,9 @@ function EditTreasurePage() {
         </div>
 
         {allowSubmit ? <button className="form-button" type="submit">Save changes</button> : <button className="form-button-edited-disabled">Save changes</button>}
-        <button className="delete-button" onClick={handleDeleteProject}>Delete Treasure</button>
+        
       </form>
+      <button className="delete-button" onClick={handleDeleteProject}>Delete Treasure</button>
     </div>
   );
 }
