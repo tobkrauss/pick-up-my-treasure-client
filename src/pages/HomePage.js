@@ -12,20 +12,20 @@ function HomePage() {
 
     return (
         <div className="home-page">
-            <div className="pick-my-treasure-logo">Pick My Treasure</div>
+            <div className="pick-my-treasure-logo">Pick up My Treasure</div>
             <div className="info-screen">
                 <div className="home-text">
-                    The easiest solution to post, find and collect abandoned items on Berlin's sidewalks
+                    The easiest solution to find and collect abandoned items on Berlin's sidewalks.
                 </div>
                 <div className="furniture-img">
                 <img src={Furnitures} style={{ width: "50vw" }} alt="" />
                 </div>
-                <div>
+                <div className="arrow-img">
                     <Link
                         to="map-screen"
                         smooth={true}
                         duration={700}
-                        offset={-20}
+                        offset={-30}
                         spy={true}
                         exact="true"
                         className="scroll-link"

@@ -75,14 +75,16 @@ function EditTreasurePage() {
   }
 
   const handleDeleteProject = (e) => {
-    axios
-      .delete(`${API_URL}/api/treasure/${treasureId}`,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
-      .then(response => {
-        navigate('/treasure');
-      })
-      .catch(err => console.log(err))
+    if (window.confirm("Are you sure you want to delete this treasure?")) {
+      axios
+        .delete(`${API_URL}/api/treasure/${treasureId}`,
+          { headers: { Authorization: `Bearer ${storedToken}` } }
+        )
+        .then(response => {
+          navigate('/treasure');
+        })
+        .catch(err => console.log(err))
+    }
   }
 
 

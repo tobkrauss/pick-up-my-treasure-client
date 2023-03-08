@@ -75,11 +75,13 @@ function Mapbox(props) {
 
             const popup = new mapboxgl.Popup()
               .setHTML(`
-      <h3>${treasureItem.title}</h3>
+      <div class="map-popup"> 
+              <p>${treasureItem.title}</p>
       <img class="popup-image" src=${treasureItem.imageUrl} alt="image" />
-      <div> 
+      <div class="popup-link"> 
       <a href="/treasure/${treasureItem._id}">View treasure</a>
       </div>
+      <div>
     `);
 
             new mapboxgl.Marker({
