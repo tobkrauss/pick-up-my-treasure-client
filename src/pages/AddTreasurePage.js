@@ -115,7 +115,19 @@ console.log("HALLOOOO")
 
                 {allowSubmit ? <button className="form-button" type="submit">Add Treasure</button> : <button className="form-button-disabled">Add Treasure</button>}
             </form>
-
+            <footer className="footer">
+                <div className="footer-copyright">
+                    Copyright © 2023 Tobias Krauß. All rights reserved
+                </div>
+                <div className="footer-impressum">
+                    <div>
+                        Datenschutz
+                    </div>
+                    <div>
+                        Impressum
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

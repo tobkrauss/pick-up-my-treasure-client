@@ -2,6 +2,7 @@ import Mapbox from "../components/Mapbox";
 import SearchMarkers from "../components/SearchMarkers";
 import { useState } from "react";
 import ArrowImage from "../images/arrow-down.png"
+import Furnitures from "../images/furniture-collection.png"
 import { Link } from "react-scroll";
 
 
@@ -11,9 +12,13 @@ function HomePage() {
 
     return (
         <div className="home-page">
+            <div className="pick-my-treasure-logo">Pick My Treasure</div>
             <div className="info-screen">
+                <div className="home-text">
+                    The easiest solution to post, find and collect abandoned items on Berlin's sidewalks
+                </div>
                 <div>
-                    <h1>Here is a huge text</h1>
+                <img src={Furnitures} style={{ width: "60vw" }} alt="" />
                 </div>
                 <div>
                     <Link

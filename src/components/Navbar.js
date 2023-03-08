@@ -7,6 +7,7 @@ function Navbar() {
 
   return (
     <nav className="Navbar">
+      <div className="header-home">
       <Link to="/">
         <button>Home</button>
       </Link>
@@ -18,18 +19,11 @@ function Navbar() {
           </Link>
         </>
       )}
-
-      {isLoggedIn && (
-        <>
-          <Link to="/new-treasure">
-            <button>Add Treasure</button>
-          </Link>
-        </>
-      )}
+</div>
+<div className="header-logout">
        {isLoggedIn && (
       
       <div className="navbar-user">
-        <span>{user && user.name}</span>
         <button onClick={logOutUser}>Logout</button>
       </div>
       )}
@@ -40,6 +34,7 @@ function Navbar() {
           <Link to="/login" style={{textDecoration: "none"}}> <button>Login</button> </Link>
         </div>
       )}
+      </div>
     </nav>
   );
 }

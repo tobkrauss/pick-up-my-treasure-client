@@ -99,10 +99,23 @@ function TreasureDetailsPage() {
                         )
                     })}
 
-                    {showForm && <AddItem refreshTreasure={getTreasure} treasureId={treasureId} />}
-                    <button className="add-item-button" onClick={toggleShowForm} >{showForm ? '-' : '+'}</button>
+                    {currentUser && treasure && currentUser._id === treasure.user && showForm && <AddItem refreshTreasure={getTreasure} treasureId={treasureId} />}
+                    {currentUser && treasure && currentUser._id === treasure.user && <button className="add-item-button" onClick={toggleShowForm} >{showForm ? '-' : '+'}</button>}
                 </div>
             </div>
+            <footer className="footer">
+                <div className="footer-copyright">
+                    Copyright © 2023 Tobias Krauß. All rights reserved
+                </div>
+                <div className="footer-impressum">
+                    <div>
+                        Datenschutz
+                    </div>
+                    <div>
+                        Impressum
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

@@ -98,7 +98,7 @@ function Mapbox(props) {
 
   return (
 
-    <div id="map" style={{ width: "80vw", height: "80vh" }}>
+    <div id="map" style={{ width: "92vw", height: "80vh" }}>
     </div>
 
   );

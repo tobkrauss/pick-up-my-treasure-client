@@ -115,9 +115,20 @@ function EditItemPage() {
 
                     {allowSubmit ? <button className="form-button" type="submit">Save changes</button> : <button className="form-button-edited-disabled" onClick={"You didnt make any change"}>Save changes</button>}
                 </form>
-
-
             </div>
+            <footer className="footer">
+                <div className="footer-copyright">
+                    Copyright © 2023 Tobias Krauß. All rights reserved
+                </div>
+                <div className="footer-impressum">
+                    <div>
+                        Datenschutz
+                    </div>
+                    <div>
+                        Impressum
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }

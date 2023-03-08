@@ -36,6 +36,7 @@ function SignupPage(props) {
   };
   
   return (
+    <div>
     <div className="SignupPage">
       <h1>Sign Up</h1>
       <p>Already have account?
@@ -72,7 +73,21 @@ function SignupPage(props) {
       </form>
  
       { errorMessage && <p className="error-message">{errorMessage}</p> }
-
+      
+    </div>
+    <footer className="footer">
+                <div className="footer-copyright">
+                    Copyright © 2023 Tobias Krauß. All rights reserved
+                </div>
+                <div className="footer-impressum">
+                    <div>
+                        Datenschutz
+                    </div>
+                    <div>
+                        Impressum
+                    </div>
+                </div>
+            </footer>
     </div>
   )
 }

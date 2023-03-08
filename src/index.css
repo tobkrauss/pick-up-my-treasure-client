@@ -2,12 +2,12 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
- 
+
 label {
   width: 200px;
   display: block;
 }
- 
+
 input,
 textarea {
   width: 200px;
@@ -15,39 +15,41 @@ textarea {
   display: inline-block;
   margin: 10px;
 }
- 
+
 .Navbar {
-  height: 7vh;
-  background-color: white;
-  border-bottom: 1px solid black;
+  height: 8vh;
+  width: 100vw;
+  background-color: #32a852;
   display: flex;
   flex-direction: row;
-justify-content: left;
-align-items: end;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3vh;
 }
 
 .Navbar button {
   border: none;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 5px;
   min-width: 50px;
-  margin: 5px;
   font-size: 18px;
-  background-color: #007bff;
+  background-color: #32a852;
   color: white;
+  font-size: 1.1em;
+  cursor: pointer;
 }
 
-.navbar-user {
-margin-left: 65vw ;
+.header-home {
+  margin-left: 3vw;
 }
 
-.navbar-user button {
-  margin-left: 2vh;
+.header-home button {
+  margin: 0 1vw
 }
 
-.navbar-login {
-  margin-left: 80vw ;
-  }
+.header-logout {
+  margin-right: 5vw;
+}
 
 .home-page {
   display: flex;
@@ -58,41 +60,57 @@ margin-left: 65vw ;
 .info-screen {
   width: 100vw;
   height: 100vh;
+  margin: 0 auto;
 }
 
-.info-screen h1 {
-  margin-bottom: 100px;
+.home-text {
+  font-size: 4vh;
+  font-weight: bold;
+  margin: 5vh auto 6vh;
 }
 
- .overview {
+.overview {
   display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-	align-items: baseline;
-	align-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  align-content: flex-start;
   margin: 20px;
- }
-
-.search-form {
-  display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: center;
-	align-items: baseline;
-	align-content: center;
-  width: 80vw;
-  margin-bottom: 20px;
 }
 
- .search-form input[type="text"] {
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 92vw;
+  background-color: #32a852;
+  margin-bottom: 5vh;
+  border-radius: 4px;
+}
+
+.add-treasure-btn {
+  padding: 10px 20px;
+  background-color: #7D2FE0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 1vw;
+}
+
+.add-treasure-btn a {
+  color: white;
+  text-decoration: none;
+}
+
+.search-form input[type="text"] {
   padding: 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 14px;
-  margin-bottom: 13px;
   width: 30vw;
-  
+
 }
 
 .card {
@@ -127,17 +145,18 @@ margin-left: 65vw ;
 
 .treasure-details-container {
   display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	align-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: center;
 }
 
 .treasure-details {
   display: flex;
   flex-direction: column;
-  background-color: #F2F2F2;;
+  background-color: #F2F2F2;
+  ;
   align-items: center;
-  width: 500px; 
+  width: 500px;
   height: 500px;
   margin: 20px auto 20px auto;
   padding-top: 3vh;
@@ -150,22 +169,22 @@ margin-left: 65vw ;
   border: 3px solid #ccc;
   border-radius: 10px;
   box-shadow: 0px 0px 30px #ccc;
-  margin-bottom: 100px;
 }
 
-.mapbox{
-    display: flex;
-    flex-direction: column;
-    background-color: #F2F2F2;;
-    align-items: center;
-    width: 500px; 
-    max-height: 500px;
-    margin: 20px auto 20px auto;
-    padding-top: 3vh;
-    border: 1px solid #F2F2F2;
-    border-radius: 5px;
-    position: relative;
-  }
+.mapbox {
+  display: flex;
+  flex-direction: column;
+  background-color: #F2F2F2;
+  ;
+  align-items: center;
+  width: 500px;
+  max-height: 500px;
+  margin: 20px auto 20px auto;
+  padding-top: 3vh;
+  border: 1px solid #F2F2F2;
+  border-radius: 5px;
+  position: relative;
+}
 
 .popup-image {
   max-width: 200px;
@@ -180,7 +199,7 @@ margin-left: 65vw ;
   height: 10%;
   background-color: lightgrey;
 } */
- 
+
 .treasure-card {
   display: flex;
   flex-direction: column;
@@ -216,7 +235,7 @@ margin-left: 65vw ;
 
 .details-icon {
   display: flex;
-	flex-direction: row;  
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -226,19 +245,23 @@ margin-left: 65vw ;
 }
 
 .item-edit:hover {
-  color: #ff0000; 
-  position: relative; 
+  color: #ff0000;
+  position: relative;
 }
 
 .item-edit:hover::before {
-  content: "Edit"; 
+  content: "Edit";
   position: absolute;
-  top: -40px; 
-  left: -20%; 
-  background-color: darkgrey; /* background color of the text */
-  color: #ffffff; /* color of the text */
-  padding: 5px; /* add some padding to the text */
-  border-radius: 5px; /* add rounded corners to the text */
+  top: -40px;
+  left: -20%;
+  background-color: darkgrey;
+  /* background color of the text */
+  color: #ffffff;
+  /* color of the text */
+  padding: 5px;
+  /* add some padding to the text */
+  border-radius: 5px;
+  /* add rounded corners to the text */
 }
 
 .img-edit {
@@ -247,57 +270,72 @@ margin-left: 65vw ;
 }
 
 .img-edit:hover {
-  color: #ff0000; 
-  position: relative; 
+  color: #ff0000;
+  position: relative;
 }
 
 .img-edit:hover::before {
-  content: "Edit"; 
+  content: "Edit";
   position: absolute;
-  top: -40px; 
-  left: -20%; 
-  background-color: darkgrey; /* background color of the text */
-  color: #ffffff; /* color of the text */
-  padding: 5px; /* add some padding to the text */
-  border-radius: 5px; /* add rounded corners to the text */
+  top: -40px;
+  left: -20%;
+  background-color: darkgrey;
+  /* background color of the text */
+  color: #ffffff;
+  /* color of the text */
+  padding: 5px;
+  /* add some padding to the text */
+  border-radius: 5px;
+  /* add rounded corners to the text */
 }
 
 .img-delete {
-  color: #000000; /* default color */
+  color: #000000;
+  /* default color */
 }
 
 .img-delete:hover {
-  color: #ff0000; /* color when hovered */
-  position: relative; /* make the pseudo-element relative to the icon */
+  color: #ff0000;
+  /* color when hovered */
+  position: relative;
+  /* make the pseudo-element relative to the icon */
 }
 
 .img-delete:hover::before {
-  content: "Delete"; /* text to be displayed */
-  position: absolute; /* position the text within the icon */
-  top: -40px; /* adjust the distance from the icon */
-  left: 10%; /* center the text horizontally */
-  background-color: red; /* background color of the text */
-  color: #ffffff; /* color of the text */
-  padding: 5px; /* add some padding to the text */
-  border-radius: 5px; /* add rounded corners to the text */
+  content: "Delete";
+  /* text to be displayed */
+  position: absolute;
+  /* position the text within the icon */
+  top: -40px;
+  /* adjust the distance from the icon */
+  left: 10%;
+  /* center the text horizontally */
+  background-color: red;
+  /* background color of the text */
+  color: #ffffff;
+  /* color of the text */
+  padding: 5px;
+  /* add some padding to the text */
+  border-radius: 5px;
+  /* add rounded corners to the text */
 }
 
- 
+
 .SignupPage,
 .LoginPage {
   background: white;
   border: 1px solid grey;
-  box-shadow: 0px 2px 3px grey;
+  box-shadow: 0px 2px 20px grey;
   width: 400px;
   text-align: center;
   margin: 10vh auto;
-  margin-bottom: 20px;
+  margin-bottom: 27vh;
   padding: 10px;
   border-radius: 4px;
 }
- 
 
- 
+
+
 
 .SignupPage form,
 .LoginPage form {
@@ -305,7 +343,7 @@ margin-left: 65vw ;
   flex-direction: column;
   align-items: center;
 }
- 
+
 
 .add-form {
   display: flex;
@@ -343,7 +381,7 @@ margin-left: 65vw ;
   border-radius: 4px;
   padding: 20px;
   margin-bottom: 10px;
-  
+
 }
 
 
@@ -365,24 +403,25 @@ margin-left: 65vw ;
   border: 1px solid #ccc;
   font-size: 14px;
   margin-bottom: 13px;
-  
+
 }
 
 
 .login-button {
   padding: 10px 0;
-  background-color: #007bff;
+  background-color: #32a852;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   margin: 7px auto 40px auto;
   width: 224px;
+  font-size: 1.1em;
 }
 
 .form-button {
   padding: 10px 0;
-  background-color: #007bff;
+  background-color: #32a852;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -469,14 +508,14 @@ margin-left: 65vw ;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-	align-content: flex-start;
+  align-content: flex-start;
   margin: 40px 20px;
 }
 
 .add-item-button {
   height: 10vh;
   padding: 10px 30px;
-  background-color: #007bff;
+  background-color: #32a852;
   color: #fff;
   border: none;
   border-radius: 10%;
@@ -486,22 +525,23 @@ margin-left: 65vw ;
   font-size: 40px;
 }
 
-.footer{
+.footer {
   width: 100vw;
   height: 10vh;
-  background-color: lightgrey;
+  background-color: #32a852;
+  color: white;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
+margin-top: 5vh;
 }
 
 .footer-copyright {
   margin-left: 5vw;
 }
 
-.footer-impressum{
+.footer-impressum {
   display: flex;
   flex-direction: row;
   margin-right: 5vw;
@@ -509,4 +549,15 @@ margin-left: 65vw ;
 
 .footer-impressum div {
   margin-left: 2vw;
+}
+
+
+.pick-my-treasure-logo {
+  font-size: 2rem;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #32a852;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
 }

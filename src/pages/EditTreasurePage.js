@@ -131,6 +131,19 @@ function EditTreasurePage() {
         
       </form>
       <button className="delete-button" onClick={handleDeleteProject}>Delete Treasure</button>
+      <footer className="footer">
+                <div className="footer-copyright">
+                    Copyright © 2023 Tobias Krauß. All rights reserved
+                </div>
+                <div className="footer-impressum">
+                    <div>
+                        Datenschutz
+                    </div>
+                    <div>
+                        Impressum
+                    </div>
+                </div>
+            </footer>
     </div>
   );
 }
