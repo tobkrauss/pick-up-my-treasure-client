@@ -50,6 +50,19 @@ function ItemDetailsPage() {
                     </Link>
                     
                 </div>
+                <footer className="footer">
+                <div className="footer-copyright">
+                    Copyright © 2023 Tobias Krauß. All rights reserved
+                </div>
+                <div className="footer-impressum">
+                    <div>
+                    Data Privacy
+                    </div>
+                    <div>
+                        Imprint
+                    </div>
+                </div>
+            </footer>
             </div>
         )
     };

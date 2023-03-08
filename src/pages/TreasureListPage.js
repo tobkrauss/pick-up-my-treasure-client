@@ -68,10 +68,10 @@ function TreasureListPage({ treasure, setTreasure }) {
                 </div>
                 <div className="footer-impressum">
                     <div>
-                        Datenschutz
+                    Data Privacy
                     </div>
                     <div>
-                        Impressum
+                        Imprint
                     </div>
                 </div>
             </footer>
