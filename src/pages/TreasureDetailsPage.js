@@ -64,6 +64,8 @@ function TreasureDetailsPage() {
     return (
         <div>
             <div>
+                <div className="treasure-details-header">
+                    <h1>Pick up my treasure here:</h1>
                 <div className="treasure-details-container">
                     <div className="mapbox">
                         {treasure !== null &&
@@ -116,6 +118,7 @@ function TreasureDetailsPage() {
                     </div>
                 </div>
             </footer>
+        </div>
         </div>
     );
 }

@@ -22,7 +22,7 @@ function ItemCard({ getTreasure, title, description, category, imageUrl, conditi
                 setCurrentUser(response.data);
             })
             .catch(err => console.log(err));
-        },[]);
+    }, []);
 
 
     const handleDeleteProject = (e) => {
@@ -39,27 +39,38 @@ function ItemCard({ getTreasure, title, description, category, imageUrl, conditi
     return (
         <div className="item-card">
             <div className="item-icon">
-            {currentUser && treasure && currentUser._id === user &&
-            <>
-                            <div className="item-edit">
-                                <Link to={`/items/edit/${_id}`}>
-                                    <img src={editIcon} alt="trash" style={{ height: 20, marginRight: 5 }} />
-                                </Link>
-                            </div>
-                            <div className="img-delete">
-                                <Link>
-                                    <img src={trashIcon} alt="trash" style={{ height: 17, marginLeft: 3}} onClick={handleDeleteProject} />
-                                </Link>
-                            </div>
-                            </>
-}
+                {currentUser && treasure && currentUser._id === user &&
+                    <>
+                        <div className="item-edit">
+                            <Link to={`/items/edit/${_id}`}>
+                                <img src={editIcon} alt="trash" style={{ height: 20, marginRight: 5 }} />
+                            </Link>
                         </div>
+                        <div className="img-delete">
+                            <Link>
+                                <img src={trashIcon} alt="trash" style={{ height: 17, marginLeft: 3 }} onClick={handleDeleteProject} />
+                            </Link>
+                        </div>
+                    </>
+                }
+            </div>
             <img src={imageUrl} alt="item" style={{ height: 150 }} />
-            <h2>{title}</h2>
-            <h4>Description</h4>
-            <p>{description}</p>
-            <p>{category}</p>
-            <p>{condition}</p>
+            <div className="item-summary">
+            <div className="item-title">
+                <p>{title}</p>
+                </div>
+                <div className="item-description">
+                <p>{description}</p>
+                </div>
+                <div className="item-category">
+                    <h4>Category: </h4>
+                    <p>{category}</p>
+                </div>
+                <div className="item-condition">
+                    <h4>Condition: </h4>
+                    <p>{condition}</p>
+                </div>
+            </div>
         </div>
     );
 }
