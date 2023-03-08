@@ -122,11 +122,11 @@ textarea {
 }
 
 .card {
-  width: 400px;
-  padding: 10px;
+  width: 26.5vw;
+  padding: 0.7vw;
   box-shadow: 0px 2px 3px grey;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 2.5vh;
   background: #F2F2F2;
   border-radius: 4px;
 }
@@ -140,9 +140,9 @@ textarea {
 .card-description {
   font-size: 16px;
   margin: 5px auto 15px auto;
-  max-width: 300px;
+  max-width: 20vw;
   text-align: center;
-  min-height: 40px;
+  min-height: 5vh;
 }
 
 .card-address {
@@ -154,6 +154,7 @@ textarea {
 .treasure-details-container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: center;
 }
@@ -163,8 +164,8 @@ textarea {
   flex-direction: column;
   background-color: #F2F2F2;
   align-items: center;
-  width: 500px;
-  height: 500px;
+  width: 35vw;
+  height: 60vh;
   margin: 20px auto 20px auto;
   padding-top: 3vh;
   border: 1px solid #F2F2F2;
