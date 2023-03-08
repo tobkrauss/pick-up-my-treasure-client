@@ -76,7 +76,7 @@ console.log("HALLOOOO")
 
     return (
         <div>
-            <h3>Add Treasure</h3>
+            <h2>Add Treasure</h2>
 
             <form onSubmit={handleSubmmit} className="add-form">
                 <div className="form-group">
