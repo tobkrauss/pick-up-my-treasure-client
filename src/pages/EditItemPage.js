@@ -29,7 +29,7 @@ function EditItemPage() {
 
         uploadData.append("imageUrl", e.target.files[0]);
 
-        axios.post("http://localhost:5005/api/upload", uploadData,
+        axios.post(`${API_URL}/api/upload`, uploadData,
             { headers: { Authorization: `Bearer ${storedToken}` } }
         )
             .then(response => {

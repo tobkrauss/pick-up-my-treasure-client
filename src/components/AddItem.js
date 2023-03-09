@@ -29,7 +29,7 @@ function AddItem(props) {
         // req.body to .create() method when creating a new Item in '/api/items' POST route
         uploadData.append("imageUrl", e.target.files[0]);
 
-        axios.post("http://localhost:5005/api/upload", uploadData,
+        axios.post(`${API_URL}/api/upload`, uploadData,
             { headers: { Authorization: `Bearer ${storedToken}` } }
         )
             .then(response => {
