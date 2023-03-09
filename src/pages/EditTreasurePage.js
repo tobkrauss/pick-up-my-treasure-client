@@ -135,7 +135,7 @@ function EditTreasurePage() {
       <button className="delete-button" onClick={handleDeleteProject}>Delete Treasure</button>
       <footer className="footer">
                 <div className="footer-copyright">
-                    Copyright © 2023 Tobias Krauß. All rights reserved
+                    Copyright © 2023 All rights reserved
                 </div>
                 <div className="footer-impressum">
                     <div>

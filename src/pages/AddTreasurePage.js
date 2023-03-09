@@ -117,7 +117,7 @@ console.log("HALLOOOO")
             </form>
             <footer className="footer">
                 <div className="footer-copyright">
-                    Copyright © 2023 Tobias Krauß. All rights reserved
+                    Copyright © 2023 All rights reserved
                 </div>
                 <div className="footer-impressum">
                     <div>
