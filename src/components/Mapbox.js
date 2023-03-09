@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
-const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoidG9ia3JhdXNzIiwiYSI6ImNsZXdrdW5jYzBmdG8zdmtjNzE3MmlmemMifQ.DS6DX6bmuHXqFRqJOW-f7A"
+const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN
 const API_URL = process.env.REACT_APP_API_URL
 
 function Mapbox(props) {
