@@ -1,70 +1,20 @@
-# Getting Started with Create React App
+# Pick-Up-My-Treasure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Over the years that I have lived in Berlin, I have seen time and again, especially in Friedrichshain, that people often just put their furniture, electronics or other things outside the front door when they want to get rid of them.
+Generally, this is probably often a good idea in terms of sustainability, but in reality it usually just causes rubbish and an ugly cityscape. One reason for lots of that "trash" on the sidewalks is probably that too few people know what is there and could get picked up for free.
 
-## Available Scripts
+With this in mind, I have programmed "pick up my treasure", a React app on which interested people can discover what people have placed on the sidewalk in front of the front door.
+On a map, you can see where which item, called "treasure", is or even find out the exact address via a detail page.
+At the same time, users can also post their own items that may have been left outside their front door and delete them again when they have been collected.
 
-In the project directory, you can run:
+## Setup
+<ul>
+<li> Clone the repository: https://github.com/tobkrauss/pick-up-my-treasure-client.git </li> 
+<li>Install the required npm-packages and start the client: $ npm install $ npm start </li>
+<li>Start the server: $ npm run dev</li>
+</ul>
 
-### `npm start`
+## Tech stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<b>Client:</b> React, JavaScript, JSON, Cloudinary, Mapbox, Axios. <br>
+<b>Server:</b> Node, Express, Mongoose, MongoDB, Bcrypt, Npm.
