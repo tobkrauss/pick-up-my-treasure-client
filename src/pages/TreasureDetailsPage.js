@@ -85,10 +85,10 @@ function TreasureDetailsPage() {
                                 }
                             </div>
                             <div className="card">
+                            {/* <p>{treasure?.owner}</p> */}
                                 <img src={treasure?.imageUrl} alt="treasure" style={{ width: "26vw", borderRadius: 5 }} />
                                 <div className="card-title">{treasure?.title}</div>
                                 <div className="card-description">{treasure?.description}</div>
-                                {/* <p>{treasure.owner}</p> */}
                                 <div className="card-address">📌 {treasure?.street}, {treasure?.zipcode} {treasure?.city}</div>
                             </div>
                         </>
